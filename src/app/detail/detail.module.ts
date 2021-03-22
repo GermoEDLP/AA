@@ -5,9 +5,14 @@ import { DetailRoutingModule } from './detail-routing.module';
 
 import { DetailComponent } from './detail.component';
 import { SharedModule } from '../shared/shared.module';
+import { PruebaComponent } from './prueba/prueba.component';
+
+// PrimeNg
+import {AccordionModule} from 'primeng/accordion';
+
 
 @NgModule({
-  declarations: [DetailComponent],
-  imports: [CommonModule, SharedModule, DetailRoutingModule]
+  declarations: [DetailComponent, PruebaComponent],
+  imports: [CommonModule, SharedModule, DetailRoutingModule, AccordionModule]
 })
 export class DetailModule {}
