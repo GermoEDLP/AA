@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-12">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a
+        class="list-group-item list-group-item-action"
+        id="list-home-list"
+        data-toggle="list"
+        [routerLink]="['/create', 'datos']"
+        role="tab"
+        aria-controls="home"
+        ><i class="pi pi-fw pi-plus"></i> Nuevo registro
+        <small>Crea un nuevo registro desde cero.</small></a
+      >
+      <a
+        class="list-group-item list-group-item-action"
+        id="list-profile-list"
+        data-toggle="list"
+        role="tab"
+        [routerLink]="['/create', 'datos']"
+        aria-controls="profile"
+        ><i class="pi pi-list"></i>
+        Listar Registros
+        <small>Lista los registros para poder filtrarlos.</small>
+      </a>
+      <a
+        class="list-group-item list-group-item-action"
+        id="list-messages-list"
+        data-toggle="list"
+        role="tab"
+        [routerLink]="['/reunion', 'listar']"
+        aria-controls="messages"
+        ><i class="pi pi-briefcase"></i>
+        Reuniones
+        <small>Lista las reuniones y sus respectivos informes finales.</small>
+        </a
+      >
+      <a
+        class="list-group-item list-group-item-action"
+        id="list-settings-list"
+        data-toggle="list"
+        role="tab"
+        [routerLink]="['/config']"
+        aria-controls="settings"
+        ><i class="pi pi-cog"></i>
+        Configuración
+        <small>Permite modificar la configuración de la aplicación.</small></a
+      >
+    </div>
+  </div>
+</div>

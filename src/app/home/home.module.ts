@@ -11,10 +11,11 @@ import { InputTextModule } from "primeng/inputtext";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { DropdownModule } from "primeng/dropdown";
 import {CardModule} from 'primeng/card';
+import { ItemsComponent } from './components/items/items.component';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ItemsComponent],
   imports: [
     CommonModule,
     SharedModule,
