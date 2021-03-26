@@ -26,32 +26,8 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 //Otros
 import { AppRoutingModule } from "./app-routing.module";
+import { AppConfig } from "../environments/environment.prod";
 
-const dbConfig: DBConfig = {
-  name: "MyDb",
-  version: 1,
-  objectStoresMeta: [
-    {
-      store: "items",
-      storeConfig: { keyPath: "id", autoIncrement: true },
-      storeSchema: [
-        { name: "name", keypath: "name", options: { unique: false } },
-        { name: "desc", keypath: "desc", options: { unique: false } },
-        {
-          name: "craeted_at",
-          keypath: "craeted_at",
-          options: { unique: false },
-        },
-        {
-          name: "updated_at",
-          keypath: "updated_at",
-          options: { unique: false },
-        },
-        { name: "opc1", keypath: "opc1", options: { unique: false } },
-      ],
-    },
-  ],
-};
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -73,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ReunionModule,
     ConfigModule,
     ListasModule,
-    NgxIndexedDBModule.forRoot(dbConfig),
+    NgxIndexedDBModule.forRoot(AppConfig.dbConfig),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
