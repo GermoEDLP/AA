@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Registro } from '../models/registro.model';
-import { ItemsService } from '../services/items.service';
+import { RegistrosService } from '../services/registros.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { ItemsService } from '../services/items.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private itemsSvc: ItemsService) { }
+  constructor(private router: Router, private registroSvc: RegistrosService) { }
 
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   leerItems(){
-    this.itemsSvc.getAll().subscribe((data)=>{
+    this.registroSvc.getAll().subscribe((data)=>{
       console.log(data);
 
     })
