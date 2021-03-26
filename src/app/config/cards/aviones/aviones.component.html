@@ -1,0 +1,65 @@
+<div class="p-shadow-4">
+  <p-card>
+    <h3 style="margin-bottom: 1rem !important">
+      Aviones
+      <span class="float-right"
+        ><button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-plus"
+          class="p-button-rounded p-button-success"
+          (click)="showForm('Nuevo avion')"
+        ></button>
+      </span>
+    </h3>
+    <p-table [value]="aviones">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Matricula</th>
+          <th>N° variable</th>
+          <th>Cód. de efect.</th>
+          <th>N° serie</th>
+          <th>N° Linea</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-avion>
+        <tr>
+          <td>{{ avion.matricula }}</td>
+          <td>{{ avion.n_variable }}</td>
+          <td>{{ avion.c_efectividad }}</td>
+          <td>{{ avion.n_serie }}</td>
+          <td>{{ avion.n_linea }}</td>
+          <td>{{ avion.marca }}</td>
+          <td>{{ avion.modelo }}</td>
+          <td>
+            <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-times"
+            (click)="borrarAvion(avion)"
+            class="p-button-rounded p-button-danger p-button-text float-right"
+            ></button>
+            <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            (click)="editarAvion(avion)"
+            class="p-button-rounded p-button-primary p-button-text float-right"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-dialog [header]="titulo" [(visible)]="display" *ngIf="avion" (onHide)="closeForm()">
+      <form>
+        <aviones-form [avion]="avion" (close)="closeForm()"></aviones-form>
+      </form>
+    </p-dialog>
+  </p-card>
+</div>

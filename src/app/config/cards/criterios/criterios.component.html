@@ -1,0 +1,57 @@
+<div class="p-shadow-4">
+  <p-card>
+    <h3 style="margin-bottom: 1rem !important">
+      Criterios
+      <span class="float-right"
+        ><button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-plus"
+          class="p-button-rounded p-button-success"
+          (click)="showForm('Nuevo Criterio')"
+        ></button>
+      </span>
+    </h3>
+    <p-table [value]="criterios">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Peso</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-crit>
+        <tr>
+          <td>{{ crit.nombre }}</td>
+          <td>{{ crit.desc }}</td>
+          <td>{{ crit.peso }}</td>
+          <td>
+            <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-times"
+            (click)="borrarCrit(crit)"
+            class="p-button-rounded p-button-danger p-button-text float-right"
+            ></button>
+            <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            (click)="editarCrit(crit)"
+            class="p-button-rounded p-button-primary p-button-text float-right"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-dialog [header]="titulo" [(visible)]="display" *ngIf="criterio" (onHide)="closeForm()">
+      <form>
+        <criterios-form [criterio]="criterio" (close)="closeForm()"></criterios-form>
+      </form>
+    </p-dialog>
+  </p-card>
+</div>
