@@ -1,0 +1,21 @@
+.box {
+  background-color: var(--surface-e);
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+.p-grid{
+  width: 100%;
+}
+
+.header-span{
+  padding: 0px 3px;
+}
+
+.title-page{
+  margin: 15px;
+  font-size: 25px;
+}

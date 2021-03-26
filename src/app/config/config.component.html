@@ -1,1 +1,60 @@
-<p>config works!</p>
+<div class="card">
+  <h5 class="title-page">Configuración</h5>
+  <p-tabView styleClass="tabview-custom">
+    <p-tabPanel header="Categorias">
+      <ng-template pTemplate="header">
+        <i class="pi pi-list"></i>
+        <span class="header-span">Categorías</span>
+      </ng-template>
+      <div class="p-grid">
+        <div class="p-col">
+          <config-card-categorias></config-card-categorias>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Preliminares">
+      <ng-template pTemplate="header">
+        <i class="pi pi-sitemap"></i>
+        <span class="header-span">Preliminares</span>
+      </ng-template>
+      <div class="p-grid">
+        <div class="p-col">
+          <config-card-preliminares></config-card-preliminares>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Criterios">
+      <ng-template pTemplate="header">
+        <i class="pi pi-sort"></i>
+        <span class="header-span">Criterios</span>
+      </ng-template>
+      <div class="p-grid">
+        <div class="p-col">
+          <config-card-criterios></config-card-criterios>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Criterios">
+      <ng-template pTemplate="header">
+        <i class="pi pi-slack"></i>
+        <span class="header-span">Impactos</span>
+      </ng-template>
+      <div class="p-grid">
+        <div class="p-col">
+          <config-card-criterios></config-card-criterios>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Criterios">
+      <ng-template pTemplate="header">
+        <i class="pi pi-send"></i>
+        <span class="header-span">Aviones</span>
+      </ng-template>
+      <div class="p-grid">
+        <div class="p-col">
+          <config-card-aviones></config-card-aviones>
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>
