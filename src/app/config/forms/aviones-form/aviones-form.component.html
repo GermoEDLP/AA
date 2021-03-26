@@ -1,0 +1,91 @@
+<div class="card">
+  <div class="p-fluid">
+    <form [formGroup]="form">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="matricula">Matricula</label>
+          <input
+            id="matricula"
+            type="text"
+            pInputText
+            formControlName="matricula"
+            name="matricula"
+          />
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="n_variable">N° variable</label>
+          <input
+            id="n_variable"
+            type="text"
+            pInputText
+            formControlName="n_variable"
+            name="n_variable"
+          />
+        </div>
+        <div class="p-field p-col">
+          <label for="c_efectividad">Código de efectividad</label>
+          <input
+            id="c_efectividad"
+            type="text"
+            pInputText
+            formControlName="c_efectividad"
+            name="c_efectividad"
+          />
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="n_serie">N° de serie</label>
+          <input
+            id="n_serie"
+            type="text"
+            pInputText
+            formControlName="n_serie"
+            name="n_serie"
+          />
+        </div>
+        <div class="p-field p-col">
+          <label for="n_linea">N° de linea</label>
+          <input
+            id="n_linea"
+            type="text"
+            pInputText
+            formControlName="n_linea"
+            name="n_linea"
+          />
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="marca">Marca</label>
+          <input
+            id="marca"
+            type="text"
+            pInputText
+            formControlName="marca"
+            name="marca"
+          />
+        </div>
+        <div class="p-field p-col">
+          <label for="modelo">Modelo</label>
+          <input
+            id="modelo"
+            type="text"
+            pInputText
+            formControlName="modelo"
+            name="modelo"
+          />
+        </div>
+      </div>
+    </form>
+    <div class="mt-3">
+      <p-button
+        [disabled]="form.invalid"
+        (click)="createAvion()"
+        [label]="botonFinal"
+      ></p-button>
+    </div>
+  </div>
+</div>
