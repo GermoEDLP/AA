@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { Preliminar } from '../../../models/options.model';
-import { OptionsService } from '../../../services/options.service';
+import { Component, OnInit } from "@angular/core";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { Subscription } from "rxjs";
+import { take } from "rxjs/operators";
+import { Preliminar } from "../../../models/options.model";
+import { OptionsService } from "../../../services/options.service";
 
 @Component({
-  selector: 'config-card-preliminares',
-  templateUrl: './preliminares.component.html',
-  styleUrls: ['./preliminares.component.scss']
+  selector: "config-card-preliminares",
+  templateUrl: "./preliminares.component.html",
+  styleUrls: ["./preliminares.component.scss"],
+  providers: [ConfirmationService, MessageService],
 })
 export class PreliminaresComponent implements OnInit {
   preliminares: Preliminar[];
@@ -16,7 +18,11 @@ export class PreliminaresComponent implements OnInit {
   display: boolean = false;
   preliminar: Preliminar;
 
-  constructor(private optSvc: OptionsService) {}
+  constructor(
+    private optSvc: OptionsService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.getPreliminares();
@@ -24,7 +30,7 @@ export class PreliminaresComponent implements OnInit {
 
   getPreliminares() {
     this.subs = this.optSvc
-      .getAll('preliminares')
+      .getAll("preliminares")
       .pipe(take(1))
       .subscribe((pres: Preliminar[]) => {
         this.preliminares = pres;
@@ -47,14 +53,32 @@ export class PreliminaresComponent implements OnInit {
     this.preliminar = undefined;
   }
 
-  editarPrelim(pre: Preliminar){
+  editarPrelim(pre: Preliminar) {
     this.showForm("Editar criterio Preliminar", pre);
   }
 
-  borrarPrelim(pre: Preliminar){
-
-    this.optSvc.delete('preliminares', pre.id).pipe(take(1)).subscribe(()=>{
-      this.getPreliminares();
+  borrarPrelim(pre: Preliminar) {
+    this.confirmationService.confirm({
+      message: `Esta seguro de querer borrar el parametro ${pre.nombre} definitivamente?`,
+      acceptLabel: "Si",
+      rejectLabel: "No",
+      accept: () => {
+        this.optSvc;
+        this.optSvc
+          .delete("preliminares", pre.id)
+          .pipe(take(1))
+          .subscribe(() => {
+            this.showSuccess();
+            this.getPreliminares();
+          });
+      },
+    });
+  }
+  showSuccess() {
+    this.messageService.add({
+      severity: "success",
+      summary: "Borrado!",
+      detail: "Preliminar borrado correctamente",
     });
   }
 }

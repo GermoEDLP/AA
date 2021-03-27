@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Avion } from '../../../models/avion.model';
-import { OptionsService } from '../../../services/options.service';
-import { take } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { Avion } from "../../../models/avion.model";
+import { OptionsService } from "../../../services/options.service";
+import { take } from "rxjs/operators";
+import { ConfirmationService, MessageService } from "primeng/api";
 
 @Component({
-  selector: 'config-card-aviones',
-  templateUrl: './aviones.component.html',
-  styleUrls: ['./aviones.component.scss']
+  selector: "config-card-aviones",
+  templateUrl: "./aviones.component.html",
+  styleUrls: ["./aviones.component.scss"],
+  providers: [ConfirmationService, MessageService],
 })
 export class AvionesComponent implements OnInit {
   aviones: Avion[];
@@ -16,7 +18,11 @@ export class AvionesComponent implements OnInit {
   display: boolean = false;
   avion: Avion;
 
-  constructor(private optSvc: OptionsService) {}
+  constructor(
+    private optSvc: OptionsService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.getAviones();
@@ -24,7 +30,7 @@ export class AvionesComponent implements OnInit {
 
   getAviones() {
     this.subs = this.optSvc
-      .getAll('aviones')
+      .getAll("aviones")
       .pipe(take(1))
       .subscribe((aviones: Avion[]) => {
         this.aviones = aviones;
@@ -35,7 +41,7 @@ export class AvionesComponent implements OnInit {
     this.subs.unsubscribe();
   }
 
-  showForm(titulo: string, avion: Avion = new Avion) {
+  showForm(titulo: string, avion: Avion = new Avion()) {
     this.titulo = titulo;
     this.avion = avion;
     this.display = true;
@@ -47,14 +53,34 @@ export class AvionesComponent implements OnInit {
     this.avion = undefined;
   }
 
-  editarAvion(avion: Avion){
+  editarAvion(avion: Avion) {
     this.showForm("Editar Avion", avion);
   }
 
-  borrarAvion(avion: Avion){
 
-    this.optSvc.delete('aviones', avion.id).pipe(take(1)).subscribe(()=>{
-      this.getAviones();
+  borrarAvion(avion: Avion) {
+    this.confirmationService.confirm({
+      message: `Esta seguro de querer borrar el avion con Matricula: ${avion.matricula}, definitivamente?`,
+      acceptLabel: "Si",
+      rejectLabel: "No",
+      accept: () => {
+        this.optSvc;
+        this.optSvc
+        .delete("aviones", avion.id)
+        .pipe(take(1))
+          .subscribe(() => {
+            this.showSuccess();
+            this.getAviones();
+          });
+      },
+    });
+  }
+
+  showSuccess() {
+    this.messageService.add({
+      severity: "success",
+      summary: "Borrado!",
+      detail: "Avion borrado correctamente",
     });
   }
 }
