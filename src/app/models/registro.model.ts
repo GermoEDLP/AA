@@ -17,7 +17,7 @@ export class Registro {
   public craeted_at: Date;
   public updated_at: Date;
   public id?: string;
-  public preliminar: Preliminar[];
+  public preliminares: Preliminar[];
   public aviones: Avion[];
   public criterios: Criterios[];
   public comentarios: Comentario[];

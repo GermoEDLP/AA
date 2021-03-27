@@ -58,8 +58,33 @@ export class Impacto {
   id?: number;
   tipo: "prog" | "costos";
   value: number;
+  base: number;
   min: number;
   max: number;
+  tope: number;
+  created_at: Date;
+  constructor(
+    tipo: "prog" | "costos",
+    base: number,
+    min: number,
+    max: number,
+    tope: number,
+    id?: number,
+    value?: number,
+  ) {
+    this.tipo = tipo;
+    this.base = base;
+    this.min = min;
+    this.max = max;
+    this.tope = tope;
+    this.created_at = new Date();
+    if (value) {
+      this.value = value;
+    }
+    if (id) {
+      this.id = id;
+    }
+  }
 }
 
 export class Categoria {
