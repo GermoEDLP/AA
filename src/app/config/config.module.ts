@@ -1,7 +1,7 @@
 //Modulos de Angular
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 //Modulos propios
 
@@ -17,6 +17,8 @@ import { ImpactoComponent } from "./cards/impacto/impacto.component";
 import { CategoriasFormComponent } from "./forms/categorias-form/categorias-form.component";
 import { PreliminaresFormComponent } from './forms/preliminares-form/preliminares-form.component';
 import { CriteriosFormComponent } from './forms/criterios-form/criterios-form.component';
+import { AvionesFormComponent } from './forms/aviones-form/aviones-form.component';
+import { ImpactoFormComponent } from './forms/impacto-form/impacto-form.component';
 
 //PrimeNg
 import { CardModule } from "primeng/card";
@@ -31,8 +33,11 @@ import { TooltipModule } from "primeng/tooltip";
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {TabViewModule} from 'primeng/tabview';
-import { AvionesFormComponent } from './forms/aviones-form/aviones-form.component';
-
+import {SliderModule} from 'primeng/slider';
+import {DividerModule} from 'primeng/divider';
+import {AvatarModule} from 'primeng/avatar';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
 
 const comp = [
   ConfigComponent,
@@ -44,7 +49,8 @@ const comp = [
   CategoriasFormComponent,
   PreliminaresFormComponent,
   CriteriosFormComponent,
-  AvionesFormComponent
+  AvionesFormComponent,
+  ImpactoFormComponent
 ];
 
 @NgModule({
@@ -52,6 +58,7 @@ const comp = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     CardModule,
     ButtonModule,
     RippleModule,
@@ -63,7 +70,12 @@ const comp = [
     TooltipModule,
     InputSwitchModule,
     InputNumberModule,
-    TabViewModule
+    TabViewModule,
+    SliderModule,
+    DividerModule,
+    AvatarModule,
+    ConfirmDialogModule,
+    ToastModule
   ],
   exports: comp,
 })
