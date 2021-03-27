@@ -1,1 +1,50 @@
-<p>impacto works!</p>
+<div class="p-shadow-4">
+  <p-card>
+    <p-toast></p-toast>
+    <p-confirmDialog
+      [style]="{ width: '50vw' }"
+      [baseZIndex]="10000"
+      rejectButtonStyleClass="p-button-text"
+    ></p-confirmDialog>
+    <h3 style="margin-bottom: 1rem !important">
+      Impacto en Programación <small>En horas</small>
+      <span class="float-right"
+        ><button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-save"
+          class="p-button-rounded p-button-info"
+          (click)="actualizar('prog')"
+        ></button>
+      </span>
+    </h3>
+    <impacto-form
+      [titulo]="'Programación'"
+      [impacto]="impactoProg"
+      [valores]="{ unidad: 'hs', letra: 'P' }"
+    ></impacto-form>
+  </p-card>
+</div>
+<div class="p-shadow-4 mt-3">
+  <p-card>
+    <h3 style="margin-bottom: 1rem !important">
+      Impacto en Costos <small>En dolares (u$s)</small>
+      <span class="float-right"
+        ><button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-save"
+          class="p-button-rounded p-button-info"
+          (click)="actualizar('costos')"
+        ></button>
+      </span>
+    </h3>
+    <impacto-form
+      [titulo]="'Costos'"
+      [impacto]="impactoCosto"
+      [valores]="{ unidad: 'u$s', letra: 'C' }"
+    ></impacto-form>
+  </p-card>
+</div>
