@@ -1,0 +1,93 @@
+<div class="card" *ngIf="impacto">
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col">
+      <label for="baseProg">Base</label>
+      <p-inputNumber
+        mode="decimal"
+        [showButtons]="true"
+        inputId="baseProg"
+        [max]="impacto.min"
+        [(ngModel)]="impacto.base"
+      >
+      </p-inputNumber>
+    </div>
+    <div class="p-field p-col">
+      <label for="baseProg">Límite inferior</label>
+      <p-inputNumber
+        mode="decimal"
+        [showButtons]="true"
+        inputId="baseProg"
+        [min]="impacto.base"
+        [max]="impacto.max"
+        [(ngModel)]="impacto.min"
+      >
+      </p-inputNumber>
+    </div>
+    <div class="p-field p-col">
+      <label for="baseProg">Limite superior</label>
+      <p-inputNumber
+        mode="decimal"
+        [showButtons]="true"
+        inputId="baseProg"
+        [min]="impacto.min"
+        [max]="impacto.tope"
+        [(ngModel)]="impacto.max"
+      >
+      </p-inputNumber>
+    </div>
+    <div class="p-field p-col">
+      <label for="baseProg">Tope</label>
+      <p-inputNumber
+        mode="decimal"
+        [showButtons]="true"
+        inputId="baseProg"
+        [min]="impacto.max"
+        [(ngModel)]="impacto.tope"
+      >
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar"
+      role="progressbar"
+      [ngStyle]="{
+        width: ((impacto.min-impacto.base) / impacto.tope) * 100 + '%'
+      }"
+    >
+      B{{valores.letra}}
+    </div>
+    <div
+      class="progress-bar bg-warning"
+      role="progressbar"
+      [ngStyle]="{
+        width: ((impacto.max-impacto.min) / impacto.tope) * 100 + '%'
+      }"
+    >
+      M{{valores.letra}}
+    </div>
+    <div
+      class="progress-bar bg-danger"
+      role="progressbar"
+      [ngStyle]="{
+        width: ((impacto.tope-impacto.max) / impacto.tope) * 100 + '%'
+      }"
+    >
+      A{{valores.letra}}
+    </div>
+  </div>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col">
+      <p-avatar label="{{'B'+valores.letra}}" styleClass="p-mr-2" [style]="{'background-color': '#007bff', 'color': '#ffffff'}"></p-avatar>
+      <span>Bajo impacto en {{titulo}}: [ {{impacto.base}}{{valores.unidad}} - {{impacto.min}}{{valores.unidad}} ]</span>
+    </div>
+    <div class="p-field p-col">
+      <p-avatar label="{{'M'+valores.letra}}" styleClass="p-mr-2" [style]="{'background-color': '#ffc107', 'color': '#ffffff'}"></p-avatar>
+      <span>Medio impacto en {{titulo}}: [ {{impacto.min}}{{valores.unidad}} - {{impacto.max}}{{valores.unidad}} ]</span>
+    </div>
+    <div class="p-field p-col">
+      <p-avatar label="{{'A'+valores.letra}}" styleClass="p-mr-2" [style]="{'background-color': '#dc3545', 'color': '#ffffff'}"></p-avatar>
+      <span>Alto impacto en {{titulo}}: [ {{impacto.max}}{{valores.unidad}} - {{impacto.tope}}{{valores.unidad}} ]</span>
+    </div>
+  </div>
+</div>
