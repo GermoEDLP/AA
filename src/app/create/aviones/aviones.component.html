@@ -1,1 +1,110 @@
-<p>aviones works!</p>
+<div class="container mb-5">
+  <div class="row mt-4">
+    <p-confirmDialog icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-toast></p-toast>
+    <p-card
+      header="Selección de aviones"
+      [style]="{ width: '100% !important', margin: 'auto' }"
+    >
+      <p-pickList
+        [source]="aviones"
+        [target]="avionesSeleccionados"
+        sourceHeader="Lista"
+        targetHeader="Seleccionados"
+        [dragdrop]="true"
+        [responsive]="true"
+        [sourceStyle]="{ height: '30rem' }"
+        [targetStyle]="{ height: '30rem' }"
+        filterBy="matricula, marca, modelo"
+        sourceFilterPlaceholder="Buscar"
+        targetFilterPlaceholder="Buscar"
+      >
+        <ng-template let-avion pTemplate="item">
+          <div>
+            <div class="product-item">
+              <div class="product-list-detail">
+                <h5 class="p-mb-2">{{ avion.matricula }}</h5>
+                <span class="product-category"
+                  >N° var:{{ avion.n_variable }}</span
+                >
+                <h6 class="p-mb-2">Serie: {{ avion.n_serie }}</h6>
+              </div>
+              <div class="product-list-action">
+                <h6>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-window-maximize"
+                    (click)="showInfo(avion)"
+                    class="p-button-rounded p-button-secondary p-button-text"
+                  ></button>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-pickList>
+      <ng-template pTemplate="footer">
+        <p-menu #menu [popup]="true" class="menu-atras" [model]="itemsPrev"></p-menu>
+        <button
+          type="button"
+          class="p-button-secondary"
+          pButton
+          label="Atras"
+          (click)="menu.toggle($event)"
+        ></button>
+
+        <p-splitButton
+          label="Siguiente"
+          icon="pi pi-angle-right"
+          (onClick)="nextCompletado()"
+          [model]="items"
+          class="menu-siguiente"
+        ></p-splitButton>
+      </ng-template>
+    </p-card>
+    <p-dialog
+      *ngIf="avion"
+      [(visible)]="display"
+      [draggable]="false"
+      [modal]="true"
+    >
+      <ng-template pTemplate="header">
+        <p>
+          {{ avion.marca }} <small>({{ avion.modelo }})</small>
+        </p>
+      </ng-template>
+      <table class="tabla">
+        <tr>
+          <th>Matricula</th>
+          <td>{{ avion.matricula }}</td>
+        </tr>
+        <tr>
+          <th>N° Variable</th>
+          <td>{{ avion.n_variable }}</td>
+        </tr>
+        <tr>
+          <th>Código de efectividad</th>
+          <td>{{ avion.c_efectividad }}</td>
+        </tr>
+        <tr>
+          <th>N° de serie</th>
+          <td>{{ avion.n_serie }}</td>
+        </tr>
+        <tr>
+          <th>N° de línea</th>
+          <td>{{ avion.n_linea }}</td>
+        </tr>
+        <tr>
+          <th>Marca</th>
+          <td>{{ avion.marca }}</td>
+        </tr>
+        <tr>
+          <th>Modelo</th>
+          <td>{{ avion.modelo }}</td>
+        </tr>
+      </table>
+    </p-dialog>
+  </div>
+</div>
