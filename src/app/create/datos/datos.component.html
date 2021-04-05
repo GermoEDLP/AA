@@ -1,1 +1,93 @@
-<p>datos works!</p>
+<div class="container mb-5">
+  <div class="row mt-4">
+    <p-confirmDialog icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-toast></p-toast>
+    <p-card
+      header="Datos principales del documento"
+      [style]="{ width: '100%' }"
+    >
+      <div class="p-fluid p-formgrid p-grid" [formGroup]="form">
+        <div class="p-field p-col-12 p-md-6">
+          <label for="n_doc">N° de documento</label>
+          <input
+            id="n_doc"
+            name="n_doc"
+            type="text"
+            pInputText
+            formControlName="n_doc"
+            [ngClass]="{'ng-invalid ng-dirty': n_docValid}"
+          />
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="titulo">Titulo</label>
+          <input
+            id="titulo"
+            type="text"
+            pInputText
+            name="titulo"
+            formControlName="titulo"
+            [ngClass]="{'ng-invalid ng-dirty': tituloValid}"
+          />
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="c_ata">Codigo ATA</label>
+          <input
+            id="c_ata"
+            type="text"
+            pInputText
+            name="c_ata"
+            formControlName="c_ata"
+          />
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="f_emision">Fecha de emisión</label>
+          <p-calendar id="f_emision" formControlName="f_emision"></p-calendar>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="n_revision">N° de revisión</label>
+          <input
+            id="n_revision"
+            type="text"
+            pInputText
+            name="n_revision"
+            formControlName="n_revision"
+          />
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="f_revision">Fecha de revisión</label>
+          <p-calendar id="f_revision" formControlName="f_revision"></p-calendar>
+        </div>
+        <div class="p-field p-col-12 p-md-12">
+          <label for="state">Categoria</label>
+          <p-dropdown
+            inputId="categorias"
+            optionLabel="nombre"
+            [options]="categorias"
+            formControlName="categ"
+            placeholder="Selccione categoria"
+          ></p-dropdown>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label for="n_ela">ELA</label>
+          <input
+            id="n_ela"
+            type="text"
+            pInputText
+            disabled="{{true}}"
+            name="n_ela"
+            formControlName="n_ela"
+          />
+        </div>
+        <div class="p-field-checkbox p-col-12 p-md-6">
+          <label for="ela" class="ela_label">No tiene ELA</label>
+          <input type="checkbox" formControlName="ela" class="check" (click)='disabled()'>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Cancelar" class="p-button-secondary" (click)="inicio()"></button>
+        <button pButton pRipple styleClass="float-right" type="button" label="Finalizar" class="p-button-success" (click)="next()"></button>
+        <button pButton pRipple styleClass="float-right" type="button" label="Siguiente" class="p-button-info" (click)="next()"></button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
