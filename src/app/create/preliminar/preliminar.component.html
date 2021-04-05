@@ -1,1 +1,73 @@
-<p>preliminar works!</p>
+<div class="container mb-5">
+  <div class="row mt-4">
+    <p-confirmDialog icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-toast></p-toast>
+    <p-card
+      header="Analisis Preliminar"
+      [style]="{ width: '100% !important', margin: 'auto' }"
+    >
+      <table>
+        <tr>
+          <th>Analisis Preliminar</th>
+          <th class="tabla_centrado">Opción del documento</th>
+          <th class="tabla_centrado">Necesario para aprobación</th>
+        </tr>
+        <tr *ngFor="let pre of preliminares">
+          <td>
+            <span pTooltip="{{ pre.desc }}" tooltipPosition="top">{{
+              pre.nombre
+            }}</span>
+          </td>
+          <td class="tabla_centrado">
+            <input
+              type="checkbox"
+              [(ngModel)]="pre.opc"
+              class="check"
+              (click)="check()"
+            />
+          </td>
+          <td class="necesario tabla_centrado" *ngIf="pre.para_aprobacion">
+            <i class="pi pi-check-circle"></i>
+          </td>
+          <td class="n_necesario tabla_centrado" *ngIf="!pre.para_aprobacion">
+            <i class="pi pi-times-circle"></i>
+          </td>
+        </tr>
+      </table>
+      <div class="alert alert-success" role="alert" *ngIf="preliminares && pasa">
+        El documento cumple con el analisis preliminar!
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="preliminares && !pasa">
+        El documento <b>no</b> cumple con el analisis preliminar!
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Atras"
+          class="p-button-secondary"
+          (click)="prevPage()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          styleClass="float-right"
+          type="button"
+          label="Finalizar"
+          class="p-button-success"
+          (click)="nextPage('finish')"
+        ></button>
+        <button
+          pButton
+          pRipple
+          styleClass="float-right"
+          type="button"
+          label="Siguiente"
+          class="p-button-info"
+          (click)="nextPage('next')"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

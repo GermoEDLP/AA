@@ -1,0 +1,47 @@
+.p-field-checkbox{
+  padding-top: 30px !important;
+}
+
+.ela_label{
+  margin-right: 10px;
+  margin-bottom: 0px !important;
+}
+
+.check{
+  border: 2px solid #ced4da;
+  background: #ffffff;
+  width: 20px;
+  height: 20px;
+  color: #495057;
+  border-radius: 3px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.check:hover{
+  border-color: #2196F3;
+}
+
+.p-button.p-button-info, .p-button.p-button-success{
+  float: right;
+  margin-left: 8px;
+}
+
+.necesario{
+  color: green;
+}
+.n_necesario{
+  color: red;
+}
+
+.tabla_centrado{
+  text-align: center;
+  padding: 15px;
+}
+
+p-card{
+  width: 100%;
+}
+
+table{
+  width: 100%;
+}
