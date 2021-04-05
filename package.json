@@ -44,6 +44,8 @@
     "@angular/animations": "11.2.6",
     "@angular/cdk": "11.2.5",
     "@electron/remote": "1.0.4",
+    "@ngrx/store": "11.1.0",
+    "@ngrx/store-devtools": "11.1.0",
     "bootstrap": "4.6.0",
     "ngx-fs": "0.0.1",
     "ngx-indexed-db": "6.1.2",

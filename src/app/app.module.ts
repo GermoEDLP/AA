@@ -24,6 +24,11 @@ import { AppComponent } from "./app.component";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
+// NgRx
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './app.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+
 //Otros
 import { AppRoutingModule } from "./app-routing.module";
 import { AppConfig } from "../environments/environment.prod";
@@ -49,6 +54,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ReunionModule,
     ConfigModule,
     ListasModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: false
+    }),
     NgxIndexedDBModule.forRoot(AppConfig.dbConfig),
     TranslateModule.forRoot({
       loader: {
