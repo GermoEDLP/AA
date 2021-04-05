@@ -24,6 +24,7 @@ export class Preliminar {
     this.nombre = nombre;
     this.desc = desc;
     this.para_aprobacion = para_aprobacion;
+    this.opc = false;
     this.created_at = new Date();
     if (id) {
       this.id = id;
