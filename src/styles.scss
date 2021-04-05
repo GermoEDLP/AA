@@ -1,10 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.p-picklist-buttons {
+  height: 15rem !important;
+}
+
+.p-picklist-buttons button {
+  background: #a6d5fa;
+  border: 1px solid #a6d5fa;
+}
+
+.p-splitbutton.p-component {
+  height: 40px !important;
+  float: right;
+}
+
+.p-card-footer.ng-star-inserted {
+  height: 55px;
+}
+
+.menu-atras
+  .ng-trigger.ng-trigger-overlayAnimation.p-menu.p-component.p-menu-overlay.ng-star-inserted {
+  top: 720.111px !important;
+}
+
+p-splitButton.menu-siguiente
+  div.p-splitbutton.p-component
+  p-menu
+  div
+  ul
+  li:first-child
+  a
+  span.pi {
+  color: green;
+}
+
+p-splitButton.menu-siguiente
+  div.p-splitbutton.p-component
+  p-menu
+  div
+  ul
+  li:nth-child(2)
+  a
+  span.pi {
+  color: #d7d700;
+}
+
+p-splitButton.menu-siguiente
+  div.p-splitbutton.p-component
+  p-menu
+  div
+  ul
+  li:nth-child(4)
+  a
+  span.pi {
+  color: red;
+}
+
+.menu-atras
+  div
+  ul
+  li:first-child
+  a
+  span.pi{
+  color: green;
+}
+
+.menu-atras
+  div
+  ul
+  li:nth-child(2)
+  a
+  span.pi {
+  color: #d7d700;
 }
 
 // /* CAN (MUST) BE REMOVED ! Sample Global style */
