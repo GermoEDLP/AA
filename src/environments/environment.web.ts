@@ -33,6 +33,7 @@ export const AppConfig = {
           { name: "criterios", keypath: "criterios", options: { unique: false } },
           { name: "comentarios", keypath: "comentarios", options: { unique: false } },
           { name: "reunion", keypath: "reunion", options: { unique: false } },
+          { name: "pendientes", keypath: "pendientes", options: { unique: false } },
         ],
       },
       {
