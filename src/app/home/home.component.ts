@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.leerItems();
   }
 
   crearUsuario(){
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit {
 
   leerItems(){
     this.registroSvc.getAll().subscribe((data)=>{
-      console.log(data);
 
     })
   }
